@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-dinner-app
+  labels:
+    app: dinner-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: dinner-app
+  template:
+    metadata:
+      labels:
+        app: dinner-app
+    spec:
+      containers:
+        - name: dinner-app
+          image: "techtitansacademy/dinner-menu:latest"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8888
